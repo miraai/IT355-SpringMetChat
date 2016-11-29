@@ -1,0 +1,22 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': !loading && f.submitted && !username.valid }">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username-field" [disabled]="loading" [(ngModel)]="model.username" #username="ngModel" required validateNospace />
+            <div *ngIf="!loading && f.submitted && !model.username" class="help-block">Username is required.</div>
+            <div *ngIf="!loading && model.username && !username.valid" class="help-block">Username contains illegal characters.</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': !loading && f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password-field" [disabled]="loading" [(ngModel)]="model.password" #password="ngModel" required validateNospace />
+            <div *ngIf="!loading && f.submitted && !model.password" class="help-block">Password is required.</div>
+            <div *ngIf="!loading && model.password && !password.valid" class="help-block">Password contains illegal characters.</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary" id="login-button">Login</button>
+            <img *ngIf="loading" src="/res/spinner32.svg" />
+            <a *ngIf="!loading" [routerLink]="['/register']" class="btn btn-link">Register</a>
+        </div>
+    </form>
+</div>

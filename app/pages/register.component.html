@@ -1,0 +1,47 @@
+﻿<div class="col-md-6 col-md-offset-3" >
+    <h2>Register</h2>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': !loading && f.submitted && !username.valid }">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" [disabled]="loading"  [(ngModel)]="model.username" #username="ngModel" required validateNospace />
+            <div *ngIf="!loading && f.submitted && !model.username" class="help-block">Username is required.</div>
+            <div *ngIf="!loading && model.username && !username.valid" class="help-block">Username contains illegal characters.</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': !loading && f.submitted && !email.valid }">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" [disabled]="loading"  [(ngModel)]="model.email" #email="ngModel" required validateEmail />
+            <div *ngIf="!loading && f.submitted && !model.email" class="help-block">Email is required.</div>
+            <div *ngIf="!loading && model.email && !email.valid" class="help-block">Email is badly formatted.</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': !loading && f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [disabled]="loading" [(ngModel)]="model.password" #password="ngModel" required validateNospace />
+            <div *ngIf="!loading && f.submitted && !model.password" class="help-block">Password is required.</div>
+            <div *ngIf="!loading && model.password && !password.valid" class="help-block">Password contains illegal characters.</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': !loading && f.submitted && !type.valid }">
+            <label for="type">Role </label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="type3" value="3" [disabled]="loading"  [(ngModel)]="model.type" #type="ngModel" checked="true" required /> User
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="type2" value="2" [disabled]="loading"  [(ngModel)]="model.type" #type="ngModel" required /> Manager
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="type1" value="1" [disabled]="loading"  [(ngModel)]="model.type" #type="ngModel" required /> Admin
+                </label>
+            </div>
+            <div *ngIf="!loading && f.submitted && !type.valid" class="help-block">Role is required.</div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary"[disabled]="loading" >Register</button>
+            <img *ngIf="loading" src="/res/spinner32.svg" />
+            <a *ngIf="!loading" [routerLink]="['/login']" class="btn btn-link">Login</a>
+        </div>
+    </form>
+</div>

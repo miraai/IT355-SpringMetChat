@@ -1,0 +1,51 @@
+﻿<div *ngIf="loggingOut" class="text-center" id="dimScreen" style="padding-top: 25%" >
+    <h4>Logging you out...</h4>
+    <img src="/res/spinner48.svg" />
+</div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" [routerLink]="['/']">MetChat</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li [routerLinkActiveOptions]="{ exact: true }" [routerLinkActive]="['active']"><a [routerLink]="['/']">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="currentUser && (currentUser.type == 1 || currentUser.type == 2)" [routerLinkActive]="['active']"><a [routerLink]="['/users']">Users</a></li>
+                <li *ngIf="currentUser" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="user-dropdown">{{currentUser.username}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a>{{currentUser.email}}</a></li>
+                        <li><a>{{currentUser.type | user_type}}</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li *ngIf="currentUser"><a (click)="logout()">Logout</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="!currentUser" [routerLinkActive]="['active']"><a [routerLink]="['/login']">Login</a></li>
+                <li *ngIf="!currentUser" [routerLinkActive]="['active']"><a [routerLink]="['/register']">Register</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>
+    <div class="col-md-6 col-md-offset-3">
+        <alert></alert>
+    </div>
+</div>
+<div class="jumbotron">
+    <p class="text-center">{{quotes[currentQuote]}}</p>
+    <h2 class="text-center">MetChat <small>Keeping it cool.</small></h2>
+</div>
+<div class="text-center">
+    <p>
+        by <a href="http://mrvelibor.com" target="none">Velibor Bačujkov</a> & Ajla Džeković, 2016.
+    </p>
+</div>

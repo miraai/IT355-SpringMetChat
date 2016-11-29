@@ -1,0 +1,21 @@
+<div class="col-md-12">
+    <div *ngIf="currentUser">
+        <h2 class="text-center">
+            Welcome back, {{currentUser.username}}!<br>
+            <small>
+                Lorem ipsum kurac palac.
+            </small>
+        </h2>
+    </div>
+    <div *ngIf="!currentUser">
+        <h2 class="text-center">
+            Welcome to MetChat!<br>
+            <small>An online chat application.</small>
+        </h2>
+        <p class="text-center">
+            If you have an account, please log in.<br>
+            Otherwise, register a new account. It's quick and easy!
+        </p>
+        <login></login>
+    </div>
+</div>
