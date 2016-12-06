@@ -15,7 +15,7 @@
         <div class="form-group">
             <button [disabled]="loading" class="btn btn-primary" id="login-button">Login</button>
             <img *ngIf="loading" src="/res/spinner32.svg" />
-            <p *ngIf="!loading" class="message">Not registered? <a [routerLink]="['/register']">Create an account</a></p>
+            <p *ngIf="!loading" class="message">Not registered? <a [routerLink]="['/register']">Create an account.</a></p>
         </div>
     </form>
 </div>

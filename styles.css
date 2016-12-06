@@ -4,11 +4,26 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url("res/background.png");
+    background: #000000 url("res/background.png");
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100%;
     margin: 0;
+}
+body:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    background: rgba(255, 255, 255, 0.67);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+a {
+    cursor: pointer;
 }
 
 .main-wrapper {
@@ -17,11 +32,6 @@ body {
     flex-wrap: nowrap;
     height: 100%;
     width: 100%;
-}
-
-article {
-    flex: 1 ;
-    overflow: auto;
 }
 
 .overlay {
@@ -40,25 +50,15 @@ article {
     text-align: center;
 }
 
-a {
-    cursor: pointer;
-}
-
-tr button.row-actions {
-}
-
-tr:hover button.row-actions {
-    display: inline!important;
-}
-
-.container {
+.container,
+.container > * {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
 
-    -webkit-flex-flow: row wrap;
+    -webkit-flex-flow: column nowrap;
 
     flex: 1;
 
@@ -175,4 +175,11 @@ tr:hover button.row-actions {
     .navigation li:last-of-type a {
         border-bottom: none;
     }
+}
+
+tr button.row-actions {
+}
+
+tr:hover button.row-actions {
+    display: inline!important;
 }
