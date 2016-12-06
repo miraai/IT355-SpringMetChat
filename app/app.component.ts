@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {AlertService} from "./services/alert.service";
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs";
+import {OverlayService} from "./services/overlay.service";
 
 @Component({
     moduleId: module.id,
@@ -29,17 +30,18 @@ export class AppComponent implements OnInit, OnDestroy {
         '"Just do it!" - Nike',
         '"There is no \'Y\' in running. Believe in the run." - Nike'
     ];
+
     currentQuote: number = 0;
     timerSubscription: Subscription;
 
     subscription: Subscription;
     loading: boolean;
-    loggingOut: boolean;
 
     currentUser: User;
 
     constructor(private authService: AuthenticationService,
                 private alertService: AlertService,
+                private overlayService: OverlayService,
                 private router: Router){
     }
 
@@ -59,19 +61,19 @@ export class AppComponent implements OnInit, OnDestroy {
     logout() {
         this.loading = true;
         this.alertService.clearMessage();
-        this.loggingOut = true;
+        this.overlayService.showMessage("Logging out...");
         this.authService.logout()
             .subscribe(
                 data => {
                     this.alertService.success(data, true);
                     this.loading = false;
-                    this.loggingOut = false;
+                    this.overlayService.clearMessage();
                     this.router.navigate(['/']);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
-                    this.loggingOut = false;
+                    this.overlayService.clearMessage();
                 }
             );
     }

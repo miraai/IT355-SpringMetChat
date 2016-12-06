@@ -51,12 +51,11 @@ export class AuthenticationService extends PhpService {
         });
     }
 
-    register(username, email, password, type) {
+    register(username, email, password) {
         let body =
             'username=' + encodeURIComponent(username) +
             '&email=' + encodeURIComponent(email) +
-            '&password=' + encodeURIComponent(password) +
-            '&type=' + encodeURIComponent(type);
+            '&password=' + encodeURIComponent(password)
         let options = PhpService.createOptions();
         return this.http.post(
             this._registeUrl,
@@ -68,6 +67,10 @@ export class AuthenticationService extends PhpService {
     }
 
     logout() {
+        this.cookieService.remove('token');
+        localStorage.removeItem('user');
+        this._userSource.next(null);
+
         let options = PhpService.createOptions();
         return this.http.delete(
             this._loginUrl,

@@ -7,7 +7,8 @@ import {AuthenticationService} from "../services/authentication.service";
 @Component({
     moduleId: module.id,
     selector: 'register',
-    templateUrl: 'register.component.html'
+    templateUrl: 'register.component.html',
+    styleUrls: ['login.component.css']
 })
 
 export class RegisterComponent {
@@ -27,7 +28,7 @@ export class RegisterComponent {
     register() {
         this.loading = true;
         this.alertService.clearMessage();
-        this.registerService.register(this.model.username, this.model.email, this.model.password, this.model.type)
+        this.registerService.register(this.model.username, this.model.email, this.model.password)
             .subscribe(
                 data => {
                     console.log(data);

@@ -23,6 +23,8 @@ import {NumberValidator} from "./directives/number.validator";
 import {NumberSorter} from "./directives/number.sorter";
 import {UserTypePipe} from "./directives/user_type.pipe";
 import {DataTableModule} from "angular2-datatable";
+import {OverlayService} from "./services/overlay.service";
+import {OverlayComponent} from "./directives/overlay.component";
 
 @NgModule({
     imports: [
@@ -36,6 +38,7 @@ import {DataTableModule} from "angular2-datatable";
     declarations: [
         AppComponent,
         AlertComponent,
+        OverlayComponent,
         UserListComponent,
         LoginComponent,
         RegisterComponent,
@@ -50,6 +53,7 @@ import {DataTableModule} from "angular2-datatable";
         AdminGuard,
         AuthGuard,
         AlertService,
+        OverlayService,
         CookieService,
         PhpService,
         AuthenticationService,

@@ -1,25 +1,32 @@
-﻿a {
-    cursor: pointer;
+﻿html {
+    height: 100%;
 }
 
-.bottom {
-    margin-top: 48px;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url("res/background.png");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    margin: 0;
 }
 
-.help-block {
-    font-size: 12px;
+.main-wrapper {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    width: 100%;
 }
 
-tr button.row-actions {
+article {
+    flex: 1 ;
+    overflow: auto;
 }
 
-tr:hover button.row-actions {
-    display: inline!important;
-}
-
-#dimScreen {
+.overlay {
     position:absolute;
-    padding:0;
+    padding: 2em;
     margin:0;
 
     top:0;
@@ -29,4 +36,143 @@ tr:hover button.row-actions {
     height: 100%;
     background:rgba(255,255,255,0.9);
     z-index: 100;
+
+    text-align: center;
+}
+
+a {
+    cursor: pointer;
+}
+
+tr button.row-actions {
+}
+
+tr:hover button.row-actions {
+    display: inline!important;
+}
+
+.container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+
+    flex: 1;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+}
+
+.navigation,
+.navigation .nav-start,
+.navigation .nav-end {
+     list-style: none;
+     margin: 0;
+
+     background: #a70532;
+
+     display: -webkit-box;
+     display: -moz-box;
+     display: -ms-flexbox;
+     display: -webkit-flex;
+     display: flex;
+
+     -webkit-flex-flow: row wrap;
+    -webkit-padding-start: 0px;
+ }
+
+.navigation .nav-title {
+    background: #7c0426;
+}
+
+.navigation .nav-start {
+    justify-content: flex-start;
+}
+
+.navigation .nav-end {
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.navigation a {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    color: white;
+}
+
+.navigation .active a {
+    background: #94052d;
+}
+
+.navigation a:hover,
+.navigation .active a:hover {
+    background: #7c0426;
+}
+
+.alert {
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+@media all and (max-width: 600px) {
+    .aside { flex: 1 auto; }
+
+    .navigation,
+    .navigation .nav-start,
+    .navigation .nav-end {
+        -webkit-flex-flow: column wrap;
+        flex-flow: column wrap;
+        padding: 0;
+    }
+
+    .navigation .nav-start,
+    .navigation .nav-end {
+        flex-grow: 1;
+    }
+
+    .navigation a {
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid rgba(255,255,255,0.3);
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .navigation li:last-of-type a {
+        border-bottom: none;
+    }
 }

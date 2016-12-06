@@ -6,8 +6,11 @@
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.png' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- bootstrap css -->
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="reset.min.css">
+
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
     <!-- application css -->
     <link href="styles.css" rel="stylesheet" />
@@ -27,14 +30,12 @@
 <body>
     <!-- Angular2 app -->
     <app>
-        <div class="text-center" style="padding-top: 25%">
-            <h4 >Loading...</h4>
+        <div class="overlay">
+            <h4>Loading...</h4>
             <img src="/res/spinner48.svg" />
         </div>
     </app>
-    <!-- Bootstrap -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
