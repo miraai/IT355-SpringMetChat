@@ -1,0 +1,51 @@
+﻿<div class="col-md-12">
+    <h1>Users</h1>
+    <div class="table-responsive">
+        <table class="table table-hover" [mfData]="users" #mf="mfDataTable" [mfRowsOnPage]="10">
+            <thead>
+                <tr>
+                    <th class="col-md-1">
+                        <mfDefaultSorter by="id">ID</mfDefaultSorter>
+                    </th>
+                    <th class="col-md-2">
+                        <mfDefaultSorter by="username">Username</mfDefaultSorter>
+                    </th>
+                    <th class="col-md-3">
+                        <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                    </th>
+                    <th class="col-md-2">
+                        <mfDefaultSorter by="type">Type</mfDefaultSorter>
+                    </th>
+                    <th class="col-md-4 text-right"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of mf.data">
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.type | user_type}}</td>
+                    <td class="text-right row-actions">
+                        <button type="button" [disabled]="user.deleting" [routerLink]="['/user', user.id]" class="btn btn-default btn-xs hidden-lg row-actions">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                        </button>
+                        <button type="button" [disabled]="user.deleting" (click)="deleteUser(user.id)" class="btn btn-default btn-xs hidden-lg row-actions">
+                            <span *ngIf="!user.deleting" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <img *ngIf="user.deleting" src="/assets/spinner16.svg" />
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[10,20,50,100]"></mfBootstrapPaginator>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <img *ngIf="loading" src="/res/spinner48.svg" />
+    <h4 *ngIf="!loading && !users.length" >There are no users.</h4>
+</div>
