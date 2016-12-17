@@ -12,7 +12,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'gs-messaging-stomp-websocket'
+    baseName = 'met-chat'
     version = '0.1.0'
 }
 sourceCompatibility = 1.8
