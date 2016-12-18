@@ -1,4 +1,8 @@
-.gradle
-build
+/.gradle/
+/.settings/
+/src/main/resources/static
+/bin/
+/build/
+
 target
-src/main/resources/static
+/.project

@@ -23,6 +23,7 @@ repositories {
 }
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.springframework.boot:spring-boot-starter-websocket")
     compile("org.webjars:webjars-locator")
     compile("org.webjars:sockjs-client:1.0.2")
