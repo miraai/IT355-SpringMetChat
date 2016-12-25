@@ -10,19 +10,14 @@ import {AuthenticationService} from "../services/authentication.service";
     styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     model: any = {};
-    onPage: boolean;
     loading: boolean;
 
     constructor(
         private router: Router,
         private loginService: AuthenticationService,
         private alertService: AlertService) { }
-
-    ngOnInit() {
-        this.onPage = this.router.url === '/login';
-    }
 
     login() {
         this.loading = true;
