@@ -38,7 +38,7 @@ public class MetUser {
     @Override
     public String toString() {
         return String.format(
-                "MetUser[username='%s'; password='%s'; avatar=%d; favorites={%s}; groups={%s}; lastOnline='%s']",
+                "MetUser[username='%s'; password='%s'; avatar=%d; favorites={%s}; groups={%s}; lastAction='%s']",
                 username,
                 password,
                 avatar,

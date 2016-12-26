@@ -74,6 +74,6 @@ export class AppComponent implements OnInit, OnDestroy {
                     this.loading = false;
                     this.overlayService.clearMessage();
                 }
-            );
+            )
     }
 }

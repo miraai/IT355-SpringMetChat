@@ -53,6 +53,9 @@ public class MetMessageController {
     		throw new BadRequestException("Parameters 'username' or 'groupname' must not be empty.");
     	}
     	
+    	user.lastAction = new Date();
+    	user = userRepo.save(user);
+    	
     	if(!username.isEmpty()) {
     		MetUser user2 = userRepo.findOne(username);
     		if(user2 == null) {
@@ -94,6 +97,9 @@ public class MetMessageController {
     	if(username.isEmpty() && groupName.isEmpty()) {
     		throw new BadRequestException("Parameters 'username' or 'groupname' must not be empty.");
     	}
+    	
+    	user.lastAction = new Date();
+    	user = userRepo.save(user);
     	
     	if(!username.isEmpty()) {
     		MetUser user2 = userRepo.findOne(username);

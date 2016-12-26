@@ -62,6 +62,7 @@ body {
 }
 .people-list .status {
     color: #92959E;
+    font-size: 9pt;
 }
 
 .chat {

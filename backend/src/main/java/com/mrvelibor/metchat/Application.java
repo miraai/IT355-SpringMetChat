@@ -36,15 +36,11 @@ public class Application implements CommandLineRunner {
 		// MetUser
 		userRepo.deleteAll();
 
-		MetUser user1 = userRepo.save(new MetUser("User 1", "1234", 1));
-		MetUser user2 = userRepo.save(new MetUser("User 2", "2234", 2));
-		MetUser user3 = userRepo.save(new MetUser("User 3", "3234", 3));
-		MetUser user4 = userRepo.save(new MetUser("Velja", "0234", 4));
-		MetUser user5 = userRepo.save(new MetUser("Veljaa", "00234", 5));
-		MetUser user6 = userRepo.save(new MetUser("Grupa 1", "00234", 6));
-		userRepo.save(new MetUser("ASD", "00234", 6));
-		userRepo.save(new MetUser("GGG", "00234", 6));
-		userRepo.save(new MetUser("TYGVasd", "00234", 6));
+		MetUser user1 = userRepo.save(new MetUser("User 1", "1234", 7));
+		MetUser user2 = userRepo.save(new MetUser("User 2", "2234", 12));
+		MetUser user3 = userRepo.save(new MetUser("Velja", "0234", 24));
+		MetUser user4 = userRepo.save(new MetUser("Veljaa", "00234", 25));
+		MetUser user5 = userRepo.save(new MetUser("Grupa 1", "00234", 33));
 
 		System.out.println("Users found with findAll():");
 		System.out.println("-------------------------------");
@@ -120,17 +116,21 @@ public class Application implements CommandLineRunner {
 		// MetMessage
 		messageRepo.deleteAll();
 
-		MetMessage message1 = messageRepo.save(new MetMessage(user1, user6, "Poruka 1"));
-		MetMessage message2 = messageRepo.save(new MetMessage(user2, user1, "Poruka 2"));
-		MetMessage message3 = messageRepo.save(new MetMessage(user1, group1, "Poruka 3"));
-		MetMessage message4 = messageRepo.save(new MetMessage(user2, group1, "Poruka 4"));
+		MetMessage message1 = messageRepo.save(new MetMessage(user1, user2, "Cao"));
+		MetMessage message2 = messageRepo.save(new MetMessage(user2, user1, "Cao"));
+		MetMessage message3 = messageRepo.save(new MetMessage(user1, group1, "Grupna poruka 1"));
+		MetMessage message4 = messageRepo.save(new MetMessage(user2, group1, "Grupna poruka 2"));
 
-		messageRepo.save(new MetMessage(user2, user1, "Poruka 2"));
-		messageRepo.save(new MetMessage(user2, user1, "Poruka 24"));
-		messageRepo.save(new MetMessage(user1, user2, "Poruka 263"));
-		messageRepo.save(new MetMessage(user2, user1, "Poruka 234"));
+		messageRepo.save(new MetMessage(user2, user1, "Sta radis?"));
+		messageRepo.save(new MetMessage(user1, user2, "Evo testiram poruke."));
+		messageRepo.save(new MetMessage(user1, user2, "Ti?"));
+		messageRepo.save(new MetMessage(user2, user1, "Evo isto..."));
 		messageRepo.save(new MetMessage(user1, user2, "Poruka 662"));
 		messageRepo.save(new MetMessage(user1, user2, "Poruka 7642"));
+
+		messageRepo.save(new MetMessage(user3, group1, "Grupna poruka 3"));
+		messageRepo.save(new MetMessage(user4, group1, "Grupna poruka 4"));
+		messageRepo.save(new MetMessage(user5, group1, "Grupna poruka 5"));
 
 		System.out.println("Messages found with findAll():");
 		System.out.println("-------------------------------");

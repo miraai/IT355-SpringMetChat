@@ -14,7 +14,7 @@
                 <div class="about">
                     <div class="name">{{user.username}}</div>
                     <div class="status">
-                        <i class="fa fa-circle online"></i> online
+                        {{user.lastAction | date:"dd.MM.yy. HH:mm"}}
                     </div>
                 </div>
             </li>
@@ -23,7 +23,7 @@
                 <div class="about">
                     <div class="name">{{group.name}}</div>
                     <div class="status">
-                        <i class="fa fa-circle online"></i> online
+                        group
                     </div>
                 </div>
             </li>
