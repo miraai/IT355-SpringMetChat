@@ -23,8 +23,6 @@
                 <tr *ngFor="let user of mf.data">
                     <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.type | user_type}}</td>
                     <td class="text-right row-actions">
                         <button type="button" [disabled]="user.deleting" [routerLink]="['/user', user.id]" class="btn btn-default btn-xs hidden-lg row-actions">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit

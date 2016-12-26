@@ -11,8 +11,8 @@
                 </li>
             </ul>
             <ul class="nav-end">
-                <li *ngIf="currentUser && currentUser.type != 0" [routerLinkActive]="['active']">
-                    <a [routerLink]="['/users']">Users</a>
+                <li *ngIf="currentUser" [routerLinkActive]="['active']">
+                    <a [routerLink]="['/message']">Messages</a>
                 </li>
                 <li *ngIf="currentUser" [routerLinkActiveOptions]="{ exact: true }"  [routerLinkActive]="['active']">
                     <a [routerLink]="['/']">{{currentUser.username}}</a>
@@ -24,7 +24,7 @@
                 <li *ngIf="!currentUser" [routerLinkActive]="['active']">
                     <a [routerLink]="['/login']">Login</a>
                 </li>
-                <li *ngIf="!currentUser || currentUser.type == 3" [routerLinkActive]="['active']">
+                <li *ngIf="!currentUser" [routerLinkActive]="['active']">
                     <a [routerLink]="['/register']">Register</a>
                 </li>
             </ul>
@@ -39,6 +39,6 @@
             <p class="text-center">{{quotes[currentQuote]}}</p>
             <h2 class="text-center">MetChat <small>Keeping it cool.</small></h2>
         </div>
-        by <a href="http://mrvelibor.com" target="none">Velibor Bačujkov</a> & Ajla Džeković, 2016.
+        by <a href="http://mrvelibor.com" target="none">Velibor Bačujkov</a> & <a href="https://github.com/miraai" target="none">Ajla Džeković</a>, 2016.
     </footer>
 </div>

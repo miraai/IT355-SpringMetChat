@@ -12,7 +12,6 @@ import {AuthenticationService} from "../services/authentication.service";
 
 export class RegisterComponent {
     model: any = {};
-    onPage: boolean;
     loading: boolean;
 
     constructor(
@@ -20,14 +19,10 @@ export class RegisterComponent {
         private registerService: AuthenticationService,
         private alertService: AlertService) { }
 
-    ngOnInit() {
-        this.onPage = this.router.url === '/register';
-    }
-
     register() {
         this.loading = true;
         this.alertService.clearMessage();
-        this.registerService.register(this.model.username, this.model.email, this.model.password)
+        this.registerService.register(this.model.username, this.model.password)
             .subscribe(
                 data => {
                     console.log(data);

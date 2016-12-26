@@ -1,0 +1,69 @@
+<div class="chat-container clearfix">
+    <div class="people-list" id="people-list">
+        <div class="search">
+            <input [(ngModel)]="searchText" type="text" placeholder="search" (keyup)="search()" />
+            <i class="fa fa-search"></i>
+        </div>
+        <ul class="list">
+            <li *ngFor="let user of users" class="clearfix" (click)="selectUser(user)" style="cursor: hand" [ngClass]="{ 'selected-user': user.username === selectedUser.username }" >
+                <img src="assets/avatars/avatar48%20({{user.avatar}}).png" alt="avatar" />
+                <div class="about">
+                    <div class="name">{{user.username}}</div>
+                    <div class="status">
+                        <i class="fa fa-circle online"></i> online
+                    </div>
+                </div>
+            </li>
+            <li *ngFor="let group of groups" class="clearfix" style="cursor: hand" >
+                <img src="assets/avatars/avatar48%20(36).png" alt="avatar" />
+                <div class="about">
+                    <div class="name">{{group.name}}</div>
+                    <div class="status">
+                        <i class="fa fa-circle online"></i> online
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="chat">
+        <div class="chat-header clearfix">
+            <img *ngIf="selectedUser" src="assets/avatars/avatar64%20({{selectedUser.avatar}}).png" alt="avatar" />
+            <div class="chat-about">
+                <div class="chat-with">Chat with {{selectedUser.username}}</div>
+                <div class="chat-num-messages">already {{messages.length}} messages</div>
+            </div>
+            <i class="fa fa-star"></i>
+        </div> <!-- end chat-header -->
+
+        <div class="chat-history">
+            <h4 *ngIf="messages.length == 0">
+                No messages.
+            </h4>
+            <ul *ngIf="messages.length > 0">
+                <li *ngFor="let message of messages" class="clearfix">
+                    <div class="message-data" [ngClass]="{ 'align-right': message.sender === currentUser.username }">
+                        <span class="message-data-time" >{{message.date}}</span>
+                        <span class="message-data-name" >{{message.sender}}</span>
+                    </div>
+                    <div class="message other-message"  [ngClass]="{ 'float-right': message.sender === currentUser.username, 'other-message': message.sender === currentUser.username, 'my-message': message.sender !== currentUser.username }">
+                        {{message.text}}
+                    </div>
+                </li>
+            </ul>
+
+        </div> <!-- end chat-history -->
+
+        <div class="chat-message clearfix">
+            <textarea [(ngModel)]="messageText" name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
+
+            <i class="fa fa-file-o"></i>
+            <i class="fa fa-file-image-o"></i>
+
+            <button (click)="sendMessage()">Send</button>
+
+        </div> <!-- end chat-message -->
+
+    </div> <!-- end chat -->
+
+</div> <!-- end container -->

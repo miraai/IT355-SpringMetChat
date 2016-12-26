@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class PhpService {
     //protected static _host: string = "http://chat.metropolitan.ac.rs";
-    protected static _host: string = "http://localhost";
+    protected static _host: string = "http://localhost:8080";
 
     constructor(protected http: Http) {
     }

@@ -10,7 +10,6 @@ import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { AlertService } from './services/alert.service';
 import { UserService } from './services/user.service';
-import { UserListComponent } from './pages/user_list.component';
 import { LoginComponent } from './pages/login.component';
 import { RegisterComponent } from './pages/register.component';
 import {HomeComponent} from "./pages/home.component";
@@ -25,6 +24,10 @@ import {UserTypePipe} from "./directives/user_type.pipe";
 import {DataTableModule} from "angular2-datatable";
 import {OverlayService} from "./services/overlay.service";
 import {OverlayComponent} from "./directives/overlay.component";
+import {UserTableComponent} from "./pages/user_table.component";
+import {MessengerComponent} from "./pages/messenger.component";
+import {GroupService} from "./services/group.service";
+import {MessageService} from "./services/message.service";
 
 @NgModule({
     imports: [
@@ -39,7 +42,8 @@ import {OverlayComponent} from "./directives/overlay.component";
         AppComponent,
         AlertComponent,
         OverlayComponent,
-        UserListComponent,
+        MessengerComponent,
+        UserTableComponent,
         LoginComponent,
         RegisterComponent,
         HomeComponent,
@@ -57,7 +61,9 @@ import {OverlayComponent} from "./directives/overlay.component";
         CookieService,
         PhpService,
         AuthenticationService,
-        UserService
+        UserService,
+        GroupService,
+        MessageService
     ],
     bootstrap: [AppComponent]
 })

@@ -36,12 +36,15 @@ public class Application implements CommandLineRunner {
 		// MetUser
 		userRepo.deleteAll();
 
-		MetUser user1 = userRepo.save(new MetUser("User 1", "1234"));
-		MetUser user2 = userRepo.save(new MetUser("User 2", "2234"));
-		MetUser user3 = userRepo.save(new MetUser("User 3", "3234"));
-		MetUser user4 = userRepo.save(new MetUser("Velja", "0234"));
-		MetUser user5 = userRepo.save(new MetUser("Veljaa", "00234"));
-		MetUser user6 = userRepo.save(new MetUser("Grupa 1", "00234"));
+		MetUser user1 = userRepo.save(new MetUser("User 1", "1234", 1));
+		MetUser user2 = userRepo.save(new MetUser("User 2", "2234", 2));
+		MetUser user3 = userRepo.save(new MetUser("User 3", "3234", 3));
+		MetUser user4 = userRepo.save(new MetUser("Velja", "0234", 4));
+		MetUser user5 = userRepo.save(new MetUser("Veljaa", "00234", 5));
+		MetUser user6 = userRepo.save(new MetUser("Grupa 1", "00234", 6));
+		userRepo.save(new MetUser("ASD", "00234", 6));
+		userRepo.save(new MetUser("GGG", "00234", 6));
+		userRepo.save(new MetUser("TYGVasd", "00234", 6));
 
 		System.out.println("Users found with findAll():");
 		System.out.println("-------------------------------");
@@ -50,7 +53,7 @@ public class Application implements CommandLineRunner {
 		}
 		System.out.println();
 		
-		user1.favorites.add("User 2");
+		user1.favorites.add(user2.username);
 		user1 = userRepo.save(user1);
 
 		System.out.println("Users found with findByUsernameStartingWithIgnoreCase(\"user\")");
@@ -121,6 +124,13 @@ public class Application implements CommandLineRunner {
 		MetMessage message2 = messageRepo.save(new MetMessage(user2, user1, "Poruka 2"));
 		MetMessage message3 = messageRepo.save(new MetMessage(user1, group1, "Poruka 3"));
 		MetMessage message4 = messageRepo.save(new MetMessage(user2, group1, "Poruka 4"));
+
+		messageRepo.save(new MetMessage(user2, user1, "Poruka 2"));
+		messageRepo.save(new MetMessage(user2, user1, "Poruka 24"));
+		messageRepo.save(new MetMessage(user1, user2, "Poruka 263"));
+		messageRepo.save(new MetMessage(user2, user1, "Poruka 234"));
+		messageRepo.save(new MetMessage(user1, user2, "Poruka 662"));
+		messageRepo.save(new MetMessage(user1, user2, "Poruka 7642"));
 
 		System.out.println("Messages found with findAll():");
 		System.out.println("-------------------------------");

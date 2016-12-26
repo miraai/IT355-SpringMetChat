@@ -8,10 +8,10 @@ import {AuthenticationService} from "../services/authentication.service";
 import {DataTable} from "angular2-datatable";
 
 @Component({
-    templateUrl: './user_list.component.html'
+    templateUrl: './user_table.component.html'
 })
 
-export class UserListComponent implements OnInit {
+export class UserTableComponent implements OnInit {
     subscription: Subscription;
     loading: boolean;
 
@@ -44,7 +44,7 @@ export class UserListComponent implements OnInit {
 
     deleteUser(id) {
         this.alertService.clearMessage();
-        let deletingUser = this.users.find(user => user.id == id);
+        /*let deletingUser = this.users.find(user => user.id == id);
         deletingUser.deleting = true;
         this.userService.deleteUser(id).subscribe(
             data => {
@@ -60,6 +60,6 @@ export class UserListComponent implements OnInit {
                 deletingUser.deleting = false;
                 this.alertService.error(error);
                 console.error(error);
-            });
+            });*/
     }
 }

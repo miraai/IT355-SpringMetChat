@@ -6,17 +6,17 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class UserService extends PhpService {
-    private _url: string = PhpService._host + '/services/user_service.php';
+    private _url: string = PhpService._host + '/users';
 
     constructor(http: Http) {
         super(http);
     }
 
-    getUser(id) {
-        if(!id) {
-            throw new Error('User ID missing.');
+    getUser(username: string) {
+        if(!username) {
+            throw new Error('Parameter "username" missing.');
         }
-        let args = '?id=' + encodeURIComponent(id);
+        let args = '?username=' + encodeURIComponent(username);
 
         let options = PhpService.createOptions(false);
         return this.http.get(
@@ -25,10 +25,14 @@ export class UserService extends PhpService {
         ).map((res: Response) => res.json());
     }
 
-    getUsers() {
+    getUsers(username: string = "") {
+        let args = '';
+        if(username) {
+            args = '?username=' + encodeURIComponent(username);
+        }
         let options = PhpService.createOptions(false);
         return this.http.get(
-            this._url,
+            this._url + args,
             options
         ).map((res: Response) => res.json());
     }

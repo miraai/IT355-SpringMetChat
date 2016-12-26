@@ -33,7 +33,7 @@ public class MetUserController {
     @RequestMapping("/users")
     public List<MetUser> findUserByUsername(@RequestParam(value="username", defaultValue="") String username) {
     	if(!username.isEmpty()) {
-    		userRepo.findByUsernameStartingWithIgnoreCase(username);
+    		return userRepo.findByUsernameStartingWithIgnoreCase(username);
     	}
 		return userRepo.findAll();
     }

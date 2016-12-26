@@ -9,8 +9,8 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class AuthenticationService extends PhpService {
-    private _loginUrl: string = PhpService._host + '/services/login_service.php';
-    private _registeUrl: string = PhpService._host + '/services/register_service.php';
+    private _loginUrl: string = PhpService._host + '/login';
+    private _registeUrl: string = PhpService._host + '/register';
 
     private _userSource;
     user$;
@@ -52,10 +52,9 @@ export class AuthenticationService extends PhpService {
         });
     }
 
-    register(username, email, password) {
+    register(username, password) {
         let body =
             'username=' + encodeURIComponent(username) +
-            '&email=' + encodeURIComponent(email) +
             '&password=' + encodeURIComponent(password)
         let options = PhpService.createOptions();
         return this.http.post(
