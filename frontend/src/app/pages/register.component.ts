@@ -11,7 +11,7 @@ import {AuthenticationService} from "../services/authentication.service";
 })
 
 export class RegisterComponent {
-    model: any = {};
+    model: any = { avatar: 1, prevAvatar: 36, nextAvatar: 2 };
     loading: boolean;
 
     constructor(
@@ -22,7 +22,7 @@ export class RegisterComponent {
     register() {
         this.loading = true;
         this.alertService.clearMessage();
-        this.registerService.register(this.model.username, this.model.password)
+        this.registerService.register(this.model.username, this.model.password, this.model.avatar)
             .subscribe(
                 data => {
                     console.log(data);
@@ -33,5 +33,28 @@ export class RegisterComponent {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+
+    changeAvatar(i: number) {
+        if (i > 0) {
+            this.model.prevAvatar = this.model.avatar;
+            this.model.avatar = this.model.nextAvatar;
+            if(this.model.nextAvatar >= 36) {
+                this.model.nextAvatar = 1;
+            }
+            else {
+                this.model.nextAvatar = this.model.nextAvatar + 1;
+            }
+        }
+        else if (i < 0) {
+            this.model.nextAvatar = this.model.avatar;
+            this.model.avatar = this.model.prevAvatar;
+            if(this.model.prevAvatar <= 1) {
+                this.model.prevAvatar = 36;
+            }
+            else {
+                this.model.prevAvatar = this.model.prevAvatar - 1;
+            }
+        }
     }
 }

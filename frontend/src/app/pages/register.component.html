@@ -7,6 +7,12 @@
             <p *ngIf="!loading && f.submitted && !model.username" class="message">Username is required.</p>
             <p *ngIf="!loading && model.username && !username.valid" class="message">Username contains illegal characters.</p>
         </div>
+        <div>
+            <p>Avatar</p>
+            <img src="assets/avatars/avatar32%20({{model.prevAvatar}}).png" alt="avatar" (click)="changeAvatar(-1)"/>
+            <img src="assets/avatars/avatar64%20({{model.avatar}}).png" alt="avatar" />
+            <img src="assets/avatars/avatar32%20({{model.nextAvatar}}).png" alt="avatar" (click)="changeAvatar(1)" />
+        </div>
         <div class="form-group" [ngClass]="{ 'has-error': !loading && f.submitted && !password.valid }">
             <input type="password" class="form-control" name="password" id="password-field" [disabled]="loading" [(ngModel)]="model.password" #password="ngModel" placeholder="password" validateNospace />
             <p *ngIf="!loading && model.password && !password.valid" class="message">Password contains illegal characters.</p>

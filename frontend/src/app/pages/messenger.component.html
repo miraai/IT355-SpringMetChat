@@ -4,8 +4,12 @@
             <input [(ngModel)]="searchText" type="text" placeholder="search" (keyup)="search()" />
             <i class="fa fa-search"></i>
         </div>
+        <div class="chat-selector">
+            <h3 (click)="userType = 'user'" [ngClass]="{ 'selected-type': useruserType === 'user' }">Users</h3>
+            <h3 (click)="userType = 'group'" [ngClass]="{ 'selected-type': userType === 'group' }">Groups</h3>
+        </div>
         <ul class="list">
-            <li *ngFor="let user of users" class="clearfix" (click)="selectUser(user)" style="cursor: hand" [ngClass]="{ 'selected-user': user.username === selectedUser.username }" >
+            <li *ngFor="let user of users" class="clearfix" (click)="selectUser(user)" style="cursor: pointer" [ngClass]="{ 'selected-user': user.username === selectedUser.username }" >
                 <img src="assets/avatars/avatar48%20({{user.avatar}}).png" alt="avatar" />
                 <div class="about">
                     <div class="name">{{user.username}}</div>
@@ -14,7 +18,7 @@
                     </div>
                 </div>
             </li>
-            <li *ngFor="let group of groups" class="clearfix" style="cursor: hand" >
+            <li *ngFor="let group of groups" class="clearfix" (click)="selectUser(group)" style="cursor: pointer" [ngClass]="{ 'selected-user': group.name === selectedUser.name }" >
                 <img src="assets/avatars/avatar48%20(36).png" alt="avatar" />
                 <div class="about">
                     <div class="name">{{group.name}}</div>
@@ -30,7 +34,7 @@
         <div class="chat-header clearfix">
             <img *ngIf="selectedUser" src="assets/avatars/avatar64%20({{selectedUser.avatar}}).png" alt="avatar" />
             <div class="chat-about">
-                <div class="chat-with">Chat with {{selectedUser.username}}</div>
+                <div class="chat-with">Chat with {{selectedUser.username}}{{selectedUser.name}}</div>
                 <div class="chat-num-messages">already {{messages.length}} messages</div>
             </div>
             <i class="fa fa-star"></i>
@@ -46,7 +50,7 @@
                         <span class="message-data-time" >{{message.date}}</span>
                         <span class="message-data-name" >{{message.sender}}</span>
                     </div>
-                    <div class="message other-message"  [ngClass]="{ 'float-right': message.sender === currentUser.username, 'other-message': message.sender === currentUser.username, 'my-message': message.sender !== currentUser.username }">
+                    <div class="message other-message" [ngClass]="{ 'float-right': message.sender === currentUser.username, 'other-message': message.sender === currentUser.username, 'my-message': message.sender !== currentUser.username }">
                         {{message.text}}
                     </div>
                 </li>

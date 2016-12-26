@@ -7,12 +7,14 @@ import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mrvelibor.metchat.Hashish;
 
 public class MetUser {
 
 	@Id
 	public String username;
+	@JsonIgnore
 	public String password;
 	public int avatar;
 	

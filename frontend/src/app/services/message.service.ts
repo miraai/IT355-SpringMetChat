@@ -6,7 +6,6 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class MessageService extends PhpService {
-    private _url: string = PhpService._host + '/messages';
 
     constructor(http: Http) {
         super(http);
@@ -20,28 +19,50 @@ export class MessageService extends PhpService {
 
         let options = PhpService.createOptions(false);
         return this.http.get(
-            this._url + args,
+            PhpService._host + '/message' + args,
             options
         ).map((res: Response) => res.json());
     }
 
-    getMessages(username: string) {
+    getUserMessages(username: string, date: number = 0) {
         if(!username) {
             throw new Error('Parameter "username" missing.');
         }
         let args = '?username=' + encodeURIComponent(username);
+        if(date) {
+            args += '&newerThan=' + date;
+        }
 
         let options = PhpService.createOptions(false);
         return this.http.get(
-            this._url + args,
+            PhpService._host + '/messages' + args,
             options
         ).map((res: Response) => res.json());
     }
 
-    newMessage(user, text) {
+    getGroupMessages(groupname: string, date: number = 0) {
+        if(!groupname) {
+            throw new Error('Parameter "groupname" missing.');
+        }
+        let args = '?groupname=' + encodeURIComponent(groupname);
+        if(date) {
+            args += '&newerThan=' + date;
+        }
+
+        let options = PhpService.createOptions(false);
+        return this.http.get(
+            PhpService._host + '/messages' + args,
+            options
+        ).map((res: Response) => res.json());
+    }
+
+    newMessage(user: string, kind: string, text: string) {
         let args = '';
+        if(!kind) {
+            throw new Error('Parameter "kind" missing.');
+        }
         if(user) {
-            args += '&username=' + encodeURIComponent(user);
+            args += '&' + kind + 'name=' + encodeURIComponent(user);
         }
         else {
             throw new Error('Parameter "name" missing.');
@@ -56,7 +77,7 @@ export class MessageService extends PhpService {
         let body = args.substr(1);
         let options = PhpService.createOptions();
         return this.http.post(
-            this._url,
+            PhpService._host + '/message/new',
             body,
             options
         ).map((res: Response) => res.json());

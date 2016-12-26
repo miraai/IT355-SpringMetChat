@@ -13,12 +13,13 @@ body {
 
 .selected-user {
     background-color: #bbbbbb;
+    cursor: default;
 }
 
 .chat-container {
     margin: 0 auto;
     width: 750px;
-    background: #c55050;
+    background: #a70532;
     border-radius: 5px;
 }
 
@@ -133,10 +134,10 @@ body {
     margin-left: -10px;
 }
 .chat .chat-history .my-message {
-    background: #c55050;
+    background: #a70532;
 }
 .chat .chat-history .other-message {
-    background: #c55050;
+    background: #a70532;
 }
 .chat .chat-history .other-message:after {
     border-bottom-color: #94C2ED;
@@ -161,7 +162,7 @@ body {
 }
 .chat .chat-message button {
     float: right;
-    color: #c55050;
+    color: #a70532;
     font-size: 16px;
     text-transform: uppercase;
     border: none;
@@ -170,7 +171,7 @@ body {
     background: #F2F5F8;
 }
 .chat .chat-message button:hover {
-    color: #c55050;
+    color: #a70532;
 }
 
 .online, .offline, .me {

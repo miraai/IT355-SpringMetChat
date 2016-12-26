@@ -9,8 +9,6 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class AuthenticationService extends PhpService {
-    private _loginUrl: string = PhpService._host + '/login';
-    private _registeUrl: string = PhpService._host + '/register';
 
     private _userSource;
     user$;
@@ -44,7 +42,7 @@ export class AuthenticationService extends PhpService {
             '&password=' + encodeURIComponent(password);
         let options = PhpService.createOptions();
         return this.http.post(
-            this._loginUrl,
+            PhpService._host + '/login',
             body,
             options
         ).map((res: Response) => {
@@ -52,13 +50,14 @@ export class AuthenticationService extends PhpService {
         });
     }
 
-    register(username, password) {
+    register(username, password, avatar) {
         let body =
             'username=' + encodeURIComponent(username) +
-            '&password=' + encodeURIComponent(password)
+            '&password=' + encodeURIComponent(password) +
+            '&avatar=' + encodeURIComponent(avatar)
         let options = PhpService.createOptions();
         return this.http.post(
-            this._registeUrl,
+            PhpService._host + '/register',
             body,
             options
         ).map((res: Response) => {
@@ -73,7 +72,7 @@ export class AuthenticationService extends PhpService {
 
         let options = PhpService.createOptions();
         return this.http.delete(
-            this._loginUrl,
+            PhpService._host + '/logout',
             options
         ).map((res: Response) => {
             this.cookieService.remove('token');
