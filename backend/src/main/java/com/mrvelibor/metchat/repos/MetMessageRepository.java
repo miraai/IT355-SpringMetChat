@@ -10,8 +10,7 @@ import com.mrvelibor.metchat.podaci.MetMessage;
 
 public interface MetMessageRepository extends MongoRepository<MetMessage, String> {
 
-	@Query("{ $and: [ { $or: [ { $and: [ { 'sender': ?0 }, { 'receiver': ?1 } ] }, 
-	       { $and: [ { 'sender': ?1 }, { 'receiver': ?0 } ] } ] }, { 'group': false } ] }")
+	@Query("{ $and: [ { $or: [ { $and: [ { 'sender': ?0 }, { 'receiver': ?1 } ] }, { $and: [ { 'sender': ?1 }, { 'receiver': ?0 } ] } ] }, { 'group': false } ] }")
     List<MetMessage> findByUsers(@Param("user1") String user1, @Param("user2") String user2);
 
     @Query("{ 'receiver': ?0, 'group': true }")
