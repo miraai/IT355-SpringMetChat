@@ -26,7 +26,8 @@ public class MetCookieController {
 	private MetUserRepository userRepo;
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public MetUser logIn(@RequestParam(value="username") String username, @RequestParam(value="password", defaultValue="") String password, HttpServletResponse response) {
+    public MetUser logIn(@RequestParam(value="username") String username, @RequestParam(value="password", defaultValue="") 
+			 String password, HttpServletResponse response) {
     	if(username.isEmpty()) {
     		throw new BadRequestException("Parameter 'username' must not be empty.");
     	}		
@@ -44,7 +45,9 @@ public class MetCookieController {
     }
     
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public MetUser register(@RequestParam(value="username") String username, @RequestParam(value="password", defaultValue="") String password, @RequestParam(value="avatar", defaultValue="1") int avatar, HttpServletResponse response) {
+    public MetUser register(@RequestParam(value="username") String username, @RequestParam(value="password", defaultValue="") 
+			    String password, @RequestParam(value="avatar", defaultValue="1") 
+			    int avatar, HttpServletResponse response) {
     	if(username.isEmpty()) {
     		throw new BadRequestException("Parameter 'username' must not be empty.");
     	}
