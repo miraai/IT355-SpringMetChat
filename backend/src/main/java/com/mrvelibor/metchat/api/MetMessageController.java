@@ -36,7 +36,9 @@ public class MetMessageController {
 	private MetCookieRepository cookieRepo;
 	
 	@RequestMapping("/messages")
-	public List<MetMessage> getMessages(@CookieValue("token") String token, @RequestParam(value="username", defaultValue="") String username, @RequestParam(value="groupname", defaultValue="") String groupName, @RequestParam(value="newerThan", defaultValue="0") long newerThan) {
+	public List<MetMessage> getMessages(@CookieValue("token") String token, @RequestParam(value="username", defaultValue="") 
+					    String username, @RequestParam(value="groupname", defaultValue="") 
+					    String groupName, @RequestParam(value="newerThan", defaultValue="0") long newerThan) {
     	if(token.isEmpty()) {
     		throw new UnauthorizedException("No token.");
     	}    	
