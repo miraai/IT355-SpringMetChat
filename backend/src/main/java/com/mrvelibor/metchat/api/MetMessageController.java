@@ -63,7 +63,8 @@ public class MetMessageController {
     		}
     		List<MetMessage> messages = messageRepo.findByUsers(user.username, user2.username);
     		if(newerThan != 0) {
-    			messages = messages.stream().filter(message -> message.date.after(new Date(newerThan))).collect(Collectors.toList());
+    			messages = messages.stream().filter(message -> message.date.after(new Date(newerThan)))
+				.collect(Collectors.toList());
     		}
     		return messages;
     	}
@@ -74,14 +75,17 @@ public class MetMessageController {
     		}
     		List<MetMessage> messages = messageRepo.findByGroup(group.name);
     		if(newerThan != 0) {
-    			messages = messages.stream().filter(message -> message.date.after(new Date(newerThan))).collect(Collectors.toList());
+    			messages = messages.stream().filter(message -> message.date.after(new Date(newerThan)))
+				.collect(Collectors.toList());
     		}
     		return messages;
     	}
 	}
     
     @RequestMapping(value = "/message/new", method = RequestMethod.POST)
-    public MetMessage newMessage(@CookieValue("token") String token, @RequestParam(value="username", defaultValue="") String username, @RequestParam(value="groupname", defaultValue="") String groupName, @RequestParam(value="text", defaultValue="") String text) {
+    public MetMessage newMessage(@CookieValue("token") String token, @RequestParam(value="username", defaultValue="") 
+				 String username, @RequestParam(value="groupname", defaultValue="") 
+				 String groupName, @RequestParam(value="text", defaultValue="") String text) {
     	if(token.isEmpty()) {
     		throw new UnauthorizedException("No token.");
     	}    	
